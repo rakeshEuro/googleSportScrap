@@ -1,4 +1,5 @@
 # googleSportScrap
+This is a crawler which will crawl The sports section of the google news 
 
 Run npm Install 
 
