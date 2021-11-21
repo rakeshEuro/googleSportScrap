@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Google Sports Crawler</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<script>
+  function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+  function myFunction(){
+    let element = document.getElementById('ScTable');
+    let btn = document.getElementById('btn');
+    if (element.style.display != 'inline'){
+    	element.style.display = 'inline';
+    	btn.innerHTML = 'hide The Headlines';
+    }
+  else{
+    element.style.display = 'none';
+    btn.innerHTML = 'Get The Headlines';
+
+  }
+  }
+</script>
+<body onload="startTime()">
+
+  <div class="container">
+    <div style="display: flex;justify-content: space-between;">
+    <h2>Google Sports Crawler</h2>
+    <h4 style="color:#f47721"><b>Time : <span id="txt"></span></b></h4>
+    </div>
+    <p>This app will give you all the Sports headlines of<a href="https://news.google.com/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNRFp1ZEdvU0JXVnVMVWRDR2dKSlRpZ0FQAQ?hl=en-IN&gl=IN&ceid=IN%3Aen"> Gooogle News.</a>
+      if you want to read the whole article then please click the <b>'Read The Article'</b> in the right side </p>
+      <button id="btn" onclick="myFunction()">Get The Headlines</button>
+      <table id ='ScTable' class="table" style="display: none;">
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (var i=0; i < result.length; i++) { %>
+          <tr>
+            <td>
+              <%=result[i].title %>
+            </td>
+            <td><a href=<%=result[i].link %>>Read The Article</a></td>
+          </tr>
+          <% } %>
+
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>
