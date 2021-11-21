@@ -6,7 +6,7 @@ const getGoogleSports = async (req, res) => {
     if(!googleSports){
         res.status(httpStatus.NO_CONTENT).send();
     }
-    res.status(200).send(googleSports);
+    res.status(200).send({Author:'Rakesh Das',result:googleSports});
   };
   
 const renderGoogleSports = async (req, res) => {
